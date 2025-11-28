@@ -66,6 +66,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Formularios\FrmInsertionSort.resx">
+      <DependentUpon>FrmInsertionSort.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
