@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnBinaria = new System.Windows.Forms.Button();
             this.btnLineal = new System.Windows.Forms.Button();
             this.btnOrdenar = new System.Windows.Forms.Button();
@@ -36,6 +37,7 @@
             this.tbRegistros = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lbOrdenada = new System.Windows.Forms.ListBox();
             this.lbDurationSorted = new System.Windows.Forms.Label();
             this.lbDurationOriginal = new System.Windows.Forms.Label();
             this.lbTimeEndSorted = new System.Windows.Forms.Label();
@@ -43,14 +45,16 @@
             this.lbTimeIniSorted = new System.Windows.Forms.Label();
             this.lbTimeIniOriginal = new System.Windows.Forms.Label();
             this.lbOriginal = new System.Windows.Forms.ListBox();
-            this.lbOrdenada = new System.Windows.Forms.ListBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.tbNumBuscado = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.tbNumBuscado);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.btnBinaria);
             this.groupBox1.Controls.Add(this.btnLineal);
@@ -66,20 +70,29 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos";
             // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(26, 46);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(305, 53);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Al momento de generar los números, se generará una lista de números aleatorios en" +
+    "tre 1 y 10,000.";
+            // 
             // btnBinaria
             // 
-            this.btnBinaria.Location = new System.Drawing.Point(52, 174);
+            this.btnBinaria.Location = new System.Drawing.Point(30, 168);
             this.btnBinaria.Name = "btnBinaria";
-            this.btnBinaria.Size = new System.Drawing.Size(219, 32);
+            this.btnBinaria.Size = new System.Drawing.Size(131, 32);
             this.btnBinaria.TabIndex = 5;
             this.btnBinaria.Text = "Búsqueda Binaria";
             this.btnBinaria.UseVisualStyleBackColor = true;
             // 
             // btnLineal
             // 
-            this.btnLineal.Location = new System.Drawing.Point(52, 136);
+            this.btnLineal.Location = new System.Drawing.Point(167, 168);
             this.btnLineal.Name = "btnLineal";
-            this.btnLineal.Size = new System.Drawing.Size(219, 32);
+            this.btnLineal.Size = new System.Drawing.Size(131, 32);
             this.btnLineal.TabIndex = 4;
             this.btnLineal.Text = "Búsqueda Lineal";
             this.btnLineal.UseVisualStyleBackColor = true;
@@ -104,6 +117,7 @@
             // 
             // tbRegistros
             // 
+            this.tbRegistros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.tbRegistros.Location = new System.Drawing.Point(200, 17);
             this.tbRegistros.Name = "tbRegistros";
             this.tbRegistros.Size = new System.Drawing.Size(131, 26);
@@ -138,6 +152,16 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Registros:";
+            // 
+            // lbOrdenada
+            // 
+            this.lbOrdenada.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.lbOrdenada.FormattingEnabled = true;
+            this.lbOrdenada.ItemHeight = 19;
+            this.lbOrdenada.Location = new System.Drawing.Point(19, 212);
+            this.lbOrdenada.Name = "lbOrdenada";
+            this.lbOrdenada.Size = new System.Drawing.Size(120, 175);
+            this.lbOrdenada.TabIndex = 8;
             // 
             // lbDurationSorted
             // 
@@ -195,6 +219,7 @@
             // 
             // lbOriginal
             // 
+            this.lbOriginal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.lbOriginal.FormattingEnabled = true;
             this.lbOriginal.ItemHeight = 19;
             this.lbOriginal.Location = new System.Drawing.Point(19, 26);
@@ -202,23 +227,25 @@
             this.lbOriginal.Size = new System.Drawing.Size(120, 175);
             this.lbOriginal.TabIndex = 0;
             // 
-            // lbOrdenada
+            // tbNumBuscado
             // 
-            this.lbOrdenada.FormattingEnabled = true;
-            this.lbOrdenada.ItemHeight = 19;
-            this.lbOrdenada.Location = new System.Drawing.Point(19, 212);
-            this.lbOrdenada.Name = "lbOrdenada";
-            this.lbOrdenada.Size = new System.Drawing.Size(120, 175);
-            this.lbOrdenada.TabIndex = 8;
+            this.tbNumBuscado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.tbNumBuscado.Location = new System.Drawing.Point(153, 136);
+            this.tbNumBuscado.Name = "tbNumBuscado";
+            this.tbNumBuscado.Size = new System.Drawing.Size(104, 26);
+            this.tbNumBuscado.TabIndex = 6;
+            this.tbNumBuscado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label2
+            // label3
             // 
-            this.label2.Location = new System.Drawing.Point(26, 46);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(305, 53);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Al momento de generar los números, se generará una lista de números aleatorios en" +
-    "tre 1 y 10,000.";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label3.Location = new System.Drawing.Point(48, 139);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(99, 19);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Valor a buscar:";
             // 
             // FrmInsertionSort
             // 
@@ -258,5 +285,7 @@
         private System.Windows.Forms.Label lbTimeIniOriginal;
         private System.Windows.Forms.ListBox lbOrdenada;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox tbNumBuscado;
     }
 }
