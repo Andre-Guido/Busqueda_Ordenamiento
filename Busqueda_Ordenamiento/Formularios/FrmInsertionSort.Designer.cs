@@ -48,6 +48,7 @@
             this.lblTimeIniOriginal = new System.Windows.Forms.Label();
             this.lstOriginal = new System.Windows.Forms.ListBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lstBusqueda = new System.Windows.Forms.ListBox();
             this.lblDurationSearch = new System.Windows.Forms.Label();
             this.lblTimeEndBusqueda = new System.Windows.Forms.Label();
             this.lblTimeIniBusqueda = new System.Windows.Forms.Label();
@@ -125,7 +126,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(37, 33);
+            this.label3.Location = new System.Drawing.Point(37, 21);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(99, 19);
             this.label3.TabIndex = 7;
@@ -134,7 +135,7 @@
             // tbNumBuscado
             // 
             this.tbNumBuscado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.tbNumBuscado.Location = new System.Drawing.Point(142, 30);
+            this.tbNumBuscado.Location = new System.Drawing.Point(142, 18);
             this.tbNumBuscado.Name = "tbNumBuscado";
             this.tbNumBuscado.Size = new System.Drawing.Size(104, 26);
             this.tbNumBuscado.TabIndex = 6;
@@ -142,7 +143,7 @@
             // 
             // btnBinaria
             // 
-            this.btnBinaria.Location = new System.Drawing.Point(41, 62);
+            this.btnBinaria.Location = new System.Drawing.Point(41, 88);
             this.btnBinaria.Name = "btnBinaria";
             this.btnBinaria.Size = new System.Drawing.Size(131, 32);
             this.btnBinaria.TabIndex = 5;
@@ -152,12 +153,13 @@
             // 
             // btnLineal
             // 
-            this.btnLineal.Location = new System.Drawing.Point(41, 100);
+            this.btnLineal.Location = new System.Drawing.Point(41, 50);
             this.btnLineal.Name = "btnLineal";
             this.btnLineal.Size = new System.Drawing.Size(131, 32);
             this.btnLineal.TabIndex = 4;
             this.btnLineal.Text = "Búsqueda Lineal";
             this.btnLineal.UseVisualStyleBackColor = true;
+            this.btnLineal.Click += new System.EventHandler(this.btnLineal_Click);
             // 
             // groupBox2
             // 
@@ -253,6 +255,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.lstBusqueda);
             this.groupBox3.Controls.Add(this.lblDurationSearch);
             this.groupBox3.Controls.Add(this.lblTimeEndBusqueda);
             this.groupBox3.Controls.Add(this.lblTimeIniBusqueda);
@@ -263,15 +266,25 @@
             this.groupBox3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(405, 16);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(282, 252);
+            this.groupBox3.Size = new System.Drawing.Size(282, 556);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Búsqueda";
             // 
+            // lstBusqueda
+            // 
+            this.lstBusqueda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.lstBusqueda.FormattingEnabled = true;
+            this.lstBusqueda.ItemHeight = 19;
+            this.lstBusqueda.Location = new System.Drawing.Point(69, 230);
+            this.lstBusqueda.Name = "lstBusqueda";
+            this.lstBusqueda.Size = new System.Drawing.Size(120, 308);
+            this.lstBusqueda.TabIndex = 9;
+            // 
             // lblDurationSearch
             // 
             this.lblDurationSearch.AutoSize = true;
-            this.lblDurationSearch.Location = new System.Drawing.Point(37, 204);
+            this.lblDurationSearch.Location = new System.Drawing.Point(37, 192);
             this.lblDurationSearch.Name = "lblDurationSearch";
             this.lblDurationSearch.Size = new System.Drawing.Size(142, 19);
             this.lblDurationSearch.TabIndex = 10;
@@ -280,7 +293,7 @@
             // lblTimeEndBusqueda
             // 
             this.lblTimeEndBusqueda.AutoSize = true;
-            this.lblTimeEndBusqueda.Location = new System.Drawing.Point(37, 170);
+            this.lblTimeEndBusqueda.Location = new System.Drawing.Point(37, 158);
             this.lblTimeEndBusqueda.Name = "lblTimeEndBusqueda";
             this.lblTimeEndBusqueda.Size = new System.Drawing.Size(152, 19);
             this.lblTimeEndBusqueda.TabIndex = 9;
@@ -289,7 +302,7 @@
             // lblTimeIniBusqueda
             // 
             this.lblTimeIniBusqueda.AutoSize = true;
-            this.lblTimeIniBusqueda.Location = new System.Drawing.Point(37, 139);
+            this.lblTimeIniBusqueda.Location = new System.Drawing.Point(37, 127);
             this.lblTimeIniBusqueda.Name = "lblTimeIniBusqueda";
             this.lblTimeIniBusqueda.Size = new System.Drawing.Size(169, 19);
             this.lblTimeIniBusqueda.TabIndex = 8;
@@ -342,5 +355,6 @@
         private System.Windows.Forms.Label lblDurationSearch;
         private System.Windows.Forms.Label lblTimeEndBusqueda;
         private System.Windows.Forms.Label lblTimeIniBusqueda;
+        private System.Windows.Forms.ListBox lstBusqueda;
     }
 }
