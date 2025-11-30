@@ -95,10 +95,10 @@ namespace Busqueda_Ordenamiento.Formularios
                 Stopwatch sw = new Stopwatch();
                 lblTimeIniSorted.Text = "Tiempo de inicio: " + DateTime.Now.ToString("HH:mm:ss");
                 sw.Start();
-                int inicio = 0;
-                int fin = numeros.Count - 1;
 
                 // Uso de una pila para manejar los rangos por procesar.
+                int inicio = 0;
+                int fin = numeros.Count - 1;
                 Stack<(int, int)> pila = new Stack<(int, int)>();
                 pila.Push((inicio, fin));
                 while (pila.Count > 0)

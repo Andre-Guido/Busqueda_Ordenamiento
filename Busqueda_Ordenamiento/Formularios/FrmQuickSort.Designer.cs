@@ -319,7 +319,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmQuickSort";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmQuickSort";
+            this.Text = "Ordenación Rápida";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
