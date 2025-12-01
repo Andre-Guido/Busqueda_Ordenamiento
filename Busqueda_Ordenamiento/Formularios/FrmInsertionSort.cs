@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -17,14 +16,30 @@ namespace Busqueda_Ordenamiento.Formularios
             InitializeComponent();
         }
 
-        private void btnGenerar_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Método para habilitar los botones.
+        /// </summary>
+        public void Habilitar()
         {
-            // Botones deshabititados para evitar errores durante la generación de números.
+            btnGenerar.Enabled = true;
+            btnOrdenar.Enabled = true;
+            btnLineal.Enabled = true;
+            btnBinaria.Enabled = true;
+        }
+
+        /// <summary>
+        /// Método para deshabilitar los botones.
+        /// </summary>
+        public void Deshabilitar()
+        {
             btnGenerar.Enabled = false;
             btnOrdenar.Enabled = false;
             btnLineal.Enabled = false;
             btnBinaria.Enabled = false;
-
+        }
+        private void btnGenerar_Click(object sender, EventArgs e)
+        {
+            Deshabilitar();
             // Control de excepciones.
             try
             {
@@ -39,7 +54,7 @@ namespace Busqueda_Ordenamiento.Formularios
                     sw.Start();
                     for (int i = 0; i < num; i++)
                     {
-                        numeros.Add(random.Next(1,10000));
+                        numeros.Add(random.Next(1, 10000));
                     }
                     lstOriginal.DataSource = null;
                     lstOriginal.DataSource = numeros;
@@ -66,26 +81,17 @@ namespace Busqueda_Ordenamiento.Formularios
                 tbRegistros.Clear();
                 tbRegistros.Focus();
             }
-
-            // Habilitación de botones luego de la generación de números.
-            btnGenerar.Enabled = true;
-            btnOrdenar.Enabled = true;
-            btnLineal.Enabled = true;
-            btnBinaria.Enabled = true;
+            Habilitar();
             tbRegistros.Clear();
             tbRegistros.Focus();
         }
 
         private void btnOrdenar_Click(object sender, EventArgs e)
         {
-            // Botones deshabititados para evitar errores durante el ordenamiento de números.
-            btnGenerar.Enabled = false;
-            btnOrdenar.Enabled = false;
-            btnLineal.Enabled = false;
-            btnBinaria.Enabled = false;
+            Deshabilitar();
 
             // Verificación de que la lista contenga números para ordenar.
-            if (numeros.Count < 0)
+            if (numeros.Count == 0)
             {
                 MessageBox.Show("No hay números para ordenar. Genere una lista primero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -109,22 +115,126 @@ namespace Busqueda_Ordenamiento.Formularios
 
                 // Actualización de la lista ordenada y cronómetro.
                 lstOrdenada.DataSource = null;
-                lstOrdenada.DataSource = numeros;
+                lstOrdenada.DataSource = new List<int>(numeros);
                 sw.Stop();
                 lblTimeEndSorted.Text = "Tiempo de fin: " + DateTime.Now.ToString("HH:mm:ss");
                 lblDurationSorted.Text = "Duración: " + sw.ElapsedMilliseconds / 1000.0000 + " segundos";
             }
+            Habilitar();
+        }
 
-            // Habilitación de botones luego del ordenamiento de números.
-            btnGenerar.Enabled = true;
-            btnOrdenar.Enabled = true;
-            btnLineal.Enabled = true;
-            btnBinaria.Enabled = true;
+        private void btnLineal_Click(object sender, EventArgs e)
+        {
+            Deshabilitar();
+
+            // Validaciones de entrada de datos.
+            if (numeros.Count == 0)
+            {
+                MessageBox.Show("Primero debe generar la lista de números.");
+                Habilitar();
+                return;
+            }
+            if (!int.TryParse(tbNumBuscado.Text, out int buscado))
+            {
+                MessageBox.Show("Ingrese un número válido para buscar.");
+                Habilitar();
+                return;
+            }
+
+            // Búsqueda lineal
+            int valorEncontrado = -1;
+            Stopwatch sw = new Stopwatch();
+            lblTimeIniBusqueda.Text = "Tiempo de inicio: " + DateTime.Now.ToString("HH:mm:ss");
+            sw.Start();
+            for (int i = 0; i < numeros.Count; i++)
+            {
+                if (numeros[i] == buscado)
+                {
+                    valorEncontrado = i;
+                    break;
+                }
+            }
+            if (valorEncontrado == -1)
+            {
+                MessageBox.Show("Elemento NO encontrado.");
+            }
+            else
+            {
+                // Crear una nueva lista para actualizar el listbox y evitar problemas de referencia.
+                lstBusqueda.DataSource = null;
+                lstBusqueda.DataSource = new List<int>(numeros);
+                MessageBox.Show($"Elemento encontrado en el índice {valorEncontrado}.");
+
+                // Resaltar en el listbox el elemento encontrado.
+                lstBusqueda.SelectedIndex = valorEncontrado;
+                lstBusqueda.TopIndex = valorEncontrado;
+            }
+            sw.Stop();
+            lblTimeEndBusqueda.Text = "Tiempo de fin: " + DateTime.Now.ToString("HH:mm:ss");
+            lblDurationSearch.Text = "Duración: " + sw.ElapsedMilliseconds / 1000.0000 + " segundos";
+            Habilitar();
         }
 
         private void btnBinaria_Click(object sender, EventArgs e)
         {
+            Deshabilitar();
+            if (numeros.Count == 0)
+            {
+                MessageBox.Show("Primero debe generar y ordenar la lista.");
+                Habilitar();
+                return;
+            }
+            if (!int.TryParse(tbNumBuscado.Text, out int buscado))
+            {
+                MessageBox.Show("Ingrese un número válido para buscar.");
+                Habilitar();
+                return;
+            }
 
+            // Búsqueda binaria.
+            int inicio = 0;
+            int fin = numeros.Count - 1;
+            int valorEncontrado = -1;
+            Stopwatch sw = new Stopwatch();
+            lblTimeIniBusqueda.Text = "Tiempo de inicio: " + DateTime.Now.ToString("HH:mm:ss");
+            sw.Start();
+            while (inicio <= fin)
+            {
+                int medio = (inicio + fin) / 2;
+
+                if (numeros[medio] == buscado)
+                {
+                    valorEncontrado = medio;
+                    break;
+                }
+                else if (numeros[medio] < buscado)
+                {
+                    inicio = medio + 1;
+                }
+                else
+                {
+                    fin = medio - 1;
+                }
+            }
+            if (valorEncontrado == -1)
+            {
+                MessageBox.Show("Elemento no encontrado.");
+            }
+            else
+            {
+                // Crear una nueva lista para actualizar el listbox y evitar problemas de referencia.
+                lstBusqueda.DataSource = null;
+                lstBusqueda.DataSource = new List<int>(numeros);
+                MessageBox.Show($"Elemento encontrado en el índice {valorEncontrado}.");
+
+                // Resaltar en el listbox el elemento encontrado.
+                lstBusqueda.SelectedIndex = valorEncontrado;
+                lstBusqueda.TopIndex = valorEncontrado;
+            }
+            sw.Stop();
+            lblTimeEndBusqueda.Text = "Tiempo de fin: " + DateTime.Now.ToString("HH:mm:ss");
+            lblDurationSearch.Text = "Duración: " + sw.ElapsedMilliseconds / 1000.0000 + " segundos";
+            Habilitar();
         }
     }
 }
